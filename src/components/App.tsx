@@ -1,11 +1,21 @@
+import { CssBaseline } from "material-ui";
 import * as React from "react";
+import HeaderView from "./HeaderView";
+import { IUserList } from "./Interfaces";
+import MenuView from "./MenuView";
+import UserListView from "./UserListView";
 
-export interface IAppProps { compiler: string; framework: string; }
-
-// 'HelloProps' describes the shape of props.
-// State is never set so we use the '{}' type.
-export class App extends React.Component<IAppProps, {}> {
+class App extends React.Component<IUserList, {}> {
     public render() {
-        return <h1>Hello from {this.props.compiler} and {this.props.framework}!</h1>;
+        return (
+            <React.Fragment>
+                <CssBaseline />
+                <HeaderView />
+                <MenuView usersList={this.props.usersList} />
+                <UserListView usersList={this.props.usersList} />
+            </React.Fragment>
+        );
     }
 }
+
+export default App;
