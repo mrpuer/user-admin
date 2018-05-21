@@ -155,7 +155,7 @@ class UserEdit extends React.Component<IUser, {}> {
       />
       <TextField
         label="ID Number"
-        defaultValue={id.value}
+        defaultValue={"jjj"}
         fullWidth={true}
         margin="dense"
         onChange={this.onIdValueChange}
@@ -222,7 +222,7 @@ class UserEdit extends React.Component<IUser, {}> {
     this.props.user.changeIdName(event.target.value);
   }
   private onIdValueChange = (event: any) => {
-    this.props.user.changeIdValue(event.target.value);
+    this.props.user.changeIdValue(Number(event.target.value));
   }
   private onPictureChange = (event: any) => {
     this.props.user.changePicture(event.target.value);

@@ -15,7 +15,7 @@ let initialState: any = {
         gender: "male",
         id: {
             name: "BSN",
-            value: "04242023",
+            value: 4242023,
         },
         location: {
             city: "maasdriel",

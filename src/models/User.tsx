@@ -14,7 +14,7 @@ const UserName = types.model({
 
 const UserId = types.model({
   name: "",
-  value: types.optional(types.union(types.string, types.null), null),
+  value: types.optional(types.union(types.number, types.null, types.string), null),
 });
 
 const UserLocation = types.model({
@@ -109,7 +109,7 @@ const User = types.model({
   changeIdName(newId: string) {
     self.id.name = newId;
   },
-  changeIdValue(newIdVal: string) {
+  changeIdValue(newIdVal: any) {
     self.id.value = newIdVal;
   },
   changePicture(newPic: any) {
