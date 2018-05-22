@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress",
+    "start": "webpack-dev-server",
     "dev": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production",
     "test": "jest"
