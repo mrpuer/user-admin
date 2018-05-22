@@ -1,19 +1,18 @@
 import {Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from "material-ui";
 import * as React from "react";
 
-interface IDialogView {
-  children: any;
-  state: any;
-  content: {
-    title: string,
-    description: string,
-    switchVar: any,
-    switchFunc: any,
-    actionFunc?: any,
-  };
-}
+// interface IDialogView {
+//   state: any;
+//   content: {
+//     title: string,
+//     description: string,
+//     switchVar: any,
+//     switchFunc: any,
+//     actionFunc?: any,
+//   };
+// }
 
-const DialogView = (props: IDialogView) => {
+const DialogView = (props: any) => {
   return (
     <Dialog
       open={props.content.switchVar}

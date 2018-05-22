@@ -2,3 +2,4 @@
 .vscode
 *.back
 node_modules/
+dist/
