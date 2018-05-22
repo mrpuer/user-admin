@@ -1,20 +1,14 @@
 import {ListItemText, MenuItem, MenuList, Paper} from "material-ui";
 import {observer} from "mobx-react";
 import * as React from "react";
-import AddNewUser from "./AddNewUser";
-import FetchNewUsers from "./FetchNewUsers";
+import NewUserAdd from "./NewUserAdd";
+import NewUserFetch from "./NewUserFetch";
 
-const styles = {
-  menu: {
-    width: 240,
-  },
-};
-
-const MenuView = (props: any) => {
+const Menu = (props: any) => {
     return (
-      <div className="main-menu" style={styles.menu}>
-      {props.usersList.isAddUserDialog && <AddNewUser usersList={props.usersList} />}
-      {props.usersList.switchFetchUsers && <FetchNewUsers usersList={props.usersList} />}
+      <div className="main-menu">
+      {props.usersList.isAddUserDialog && <NewUserAdd usersList={props.usersList} />}
+      {props.usersList.switchFetchUsers && <NewUserFetch usersList={props.usersList} />}
         <Paper>
           <MenuList>
             <MenuItem>
@@ -35,4 +29,4 @@ const MenuView = (props: any) => {
     );
   };
 
-export default observer(MenuView);
+export default observer(Menu);

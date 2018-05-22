@@ -22,7 +22,13 @@ const UserList = types.model({
   fetchUsers: flow(function* fetchUsers() {
     const response = yield window.fetch("https://randomuser.me/api/?results=10");
     const newUsers = yield response.json();
-    self.users.push(...newUsers.results);
+    const newUsersFormatted = newUsers.results.map((user: UserType) => {
+      user.dob = user.dob.split(" ")[0];
+      user.registered = user.registered.split(" ")[0];
+      return user;
+    });
+    self.users.push(...newUsersFormatted);
+    self.isFetchUserDialog = false;
 }),
 })).views((self) => ({
   get totalUsers() {

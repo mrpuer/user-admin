@@ -9,17 +9,25 @@ interface IInputEvent {
 const UserName = types.model({
   first: "",
   last: "",
-  title: types.optional(types.enumeration("title", ["mr", "ms", "miss", "monsieur", "mrs", ""]), ""),
+  title: types.optional(types.enumeration("title", ["mr",
+    "ms",
+    "miss",
+    "monsieur",
+    "mrs",
+    "",
+    "madame",
+    "mademoiselle",
+  ]), ""),
 });
 
 const UserId = types.model({
   name: "",
-  value: types.optional(types.union(types.number, types.null, types.string), null),
+  value: types.optional(types.union(types.number, types.string, types.null), null),
 });
 
 const UserLocation = types.model({
   city: "",
-  postcode: 0,
+  postcode: types.optional(types.union(types.number, types.string), ""),
   state: "",
   street: "",
 });
@@ -52,6 +60,8 @@ const User = types.model({
   phone: "",
   picture: types.optional(UserPicture, {}),
   registered: "1945-05-09",
+  showDeleteDialog: false,
+  showEditDialog: false,
 }).actions(((self) => ({
   changeFName(newName: string) {
     self.name.first = newName;
@@ -59,7 +69,7 @@ const User = types.model({
   changeLName(newName: string) {
     self.name.last = newName;
   },
-  changeTitle(event: "mr" | "ms" | "miss" | "monsieur" | "mrs" | "") {
+  changeTitle(event: "mr" | "ms" | "miss" | "monsieur" | "mrs" | "" | "madame" | "mademoiselle") {
     self.name.title = event;
   },
   changeGender(newGender: "male" | "female" | "") {
@@ -74,8 +84,8 @@ const User = types.model({
   changeState(newState: string) {
     self.location.state = newState;
   },
-  changePost(newPost: string) {
-    self.location.postcode = Number(newPost);
+  changePost(newPost: string | number) {
+    self.location.postcode = newPost;
   },
   changeLogin(newLogin: string) {
     self.login.username = newLogin;
@@ -119,6 +129,12 @@ const User = types.model({
   },
   remove() {
     getParent(self, 2).remove(self);
+  },
+  switchDeleteDialog() {
+    self.showDeleteDialog = !self.showDeleteDialog;
+  },
+  switchEditDialog() {
+    self.showEditDialog = !self.showEditDialog;
   },
 })));
 
