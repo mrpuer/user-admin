@@ -2,16 +2,16 @@ import * as React from "react";
 import {IUser} from "./Interfaces";
 import DialogView from "./Views/DialogView";
 
-const UserDelete = (props: IUser) => {
-  const fullName = `${props.user.name.title} ${props.user.name.first} ${props.user.name.last}`;
+const UserDelete = ({user}: IUser) => {
+  const fullName = `${user.name.title} ${user.name.first} ${user.name.last}`;
   const dialogContent = {
-    actionFunc: props.user.remove,
+    actionFunc: user.remove,
     description: "Are you sure?",
-    switchFunc: props.user.switchDeleteDialog,
-    switchVar: props.user.showDeleteDialog,
+    switchFunc: user.switchDeleteDialog,
+    switchVar: user.showDeleteDialog,
     title: `REMOVE user ${fullName}`,
   };
-  return <DialogView state={props.user} content={dialogContent} />;
+  return <DialogView state={user} content={dialogContent} />;
 };
 
 export default UserDelete;

@@ -1,4 +1,4 @@
-import { CssBaseline } from "material-ui";
+import { CircularProgress, CssBaseline } from "material-ui";
 import * as React from "react";
 import { IUserList } from "./Interfaces";
 import Menu from "./Menu";

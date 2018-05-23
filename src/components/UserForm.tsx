@@ -27,6 +27,11 @@ class UserForm extends React.Component<IUser, {}> {
       half: {
         width: 150,
       },
+      oneLine: {
+        float: "left",
+        margin: 10,
+        width: 150,
+      },
       root: {
         padding: 10,
       },
@@ -38,10 +43,28 @@ class UserForm extends React.Component<IUser, {}> {
 
     return (
       <div className="user-edit" style={styles.root}>
+      <FormControl style={styles.full}>
+        <Typography variant="body2" align="center" style={styles.titles}>
+          User Login Data
+        </Typography>
+        <TextField
+          id="username"
+          label="Username"
+          defaultValue={login.username}
+          onChange={this.onLoginChange}
+          required={true}
+        />
+        <TextField
+          label="Password"
+          defaultValue={login.password}
+          type="password"
+          onChange={this.onPasswordChange}
+          required={true}
+        />
+
       <Typography variant="body2" align="center" style={styles.titles}>
         User Gender
       </Typography>
-      <FormControl style={styles.full}>
       <TextField
           id="gender"
           select={true}
@@ -100,6 +123,7 @@ class UserForm extends React.Component<IUser, {}> {
         label="User Email Address"
         defaultValue={email}
         onChange={this.onEmailChange}
+        required={true}
       />
 
       <TextField
@@ -138,22 +162,6 @@ class UserForm extends React.Component<IUser, {}> {
         label="Cell Number"
         defaultValue={cell}
         onChange={this.onCellChange}
-      />
-
-      <Typography variant="body2" align="center" style={styles.titles}>
-        User Login Data
-      </Typography>
-      <TextField
-        id="username"
-        label="Username"
-        defaultValue={login.username}
-        onChange={this.onLoginChange}
-      />
-      <TextField
-        label="Password"
-        defaultValue={login.password}
-        type="password"
-        onChange={this.onPasswordChange}
       />
 
       <Typography variant="body2" align="center" style={styles.titles}>
@@ -254,7 +262,7 @@ class UserForm extends React.Component<IUser, {}> {
     this.props.user.changeIdName(event.target.value);
   }
   private onIdValueChange = (event: any) => {
-    this.props.user.changeIdValue(Number(event.target.value));
+    this.props.user.changeIdValue(event.target.value);
   }
   private onPictureChange = (event: any) => {
     this.props.user.changePicture(event.target.value);

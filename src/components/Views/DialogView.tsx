@@ -12,25 +12,25 @@ import * as React from "react";
 //   };
 // }
 
-const DialogView = (props: any) => {
+const DialogView = ({content, children}: any) => {
   return (
     <Dialog
-      open={props.content.switchVar}
-      onClose={props.content.switchFunc}
+      open={content.switchVar}
+      onClose={content.switchFunc}
       aria-labelledby="form-dialog-title"
     >
-      <DialogTitle id="form-dialog-title">{props.content.title}</DialogTitle>
+      <DialogTitle id="form-dialog-title">{content.title}</DialogTitle>
       <DialogContent>
         <DialogContentText>
-        {props.content.description}
+        {content.description}
         </DialogContentText>
-        {props.children && props.children}
+        {children && children}
       </DialogContent>
       <DialogActions>
-        <Button onClick={props.content.switchFunc} color="primary">
+        <Button onClick={content.switchFunc} color="primary">
           Cancel
         </Button>
-        {props.content.actionFunc && <Button onClick={props.content.actionFunc} color="primary">OK</Button>}
+        {content.actionFunc && <Button onClick={content.actionFunc} color="primary">OK</Button>}
       </DialogActions>
     </Dialog>
   );
