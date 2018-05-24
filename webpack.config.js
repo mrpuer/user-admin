@@ -1,4 +1,5 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -27,9 +28,11 @@ module.exports = {
           // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
           { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
           { test: /\.css$/, use: ['style-loader', 'css-loader'] },
-      ]
+      ],
   },
-
+  plugins: [
+    new Dotenv()
+  ],
   // When importing a module whose path matches one of the following, just
   // assume a corresponding global variable exists and use that instead.
   // This is important because it allows us to avoid bundling all of our
