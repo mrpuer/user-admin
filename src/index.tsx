@@ -10,7 +10,8 @@ let initialState: any = {
     isAddUserDialog: false,
     isFetchUserDialog: false,
     isRemoveAllDialog: false,
-    users: [],
+    showLoader: false,
+    users: [{}],
 };
 
 if (localStorage.getItem("useradminapp")) {
