@@ -14,8 +14,8 @@ let initialState: any = {
     users: [],
 };
 
-if (localStorage.getItem("useradminapp2")) {
-    const json = JSON.parse(localStorage.getItem("useradminapp2") || "{}");
+if (localStorage.getItem("useradminapp")) {
+    const json = JSON.parse(localStorage.getItem("useradminapp") || "{}");
     if (UserList.is(json)) { initialState = json; }
 }
 
@@ -28,7 +28,7 @@ addMiddleware(users, (call, next) => {
 });
 
 onSnapshot(users, (snapshot) => {
-    localStorage.setItem("useradminapp2", JSON.stringify(snapshot));
+    localStorage.setItem("useradminapp", JSON.stringify(snapshot));
 });
 
 function renderApp() {

@@ -52,7 +52,7 @@ const User = types.model({
   dob: "1945-05-09",
   email: "",
   gender: types.optional(types.enumeration("gender", ["male", "female", ""]), ""),
-  id: UserId,
+  id: types.optional(UserId, {}),
   location: types.optional(UserLocation, {}),
   login: types.optional(UserLogin, {}),
   name: types.optional(UserName, {}),
