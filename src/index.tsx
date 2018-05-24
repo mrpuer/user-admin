@@ -11,16 +11,16 @@ let initialState: any = {
     isFetchUserDialog: false,
     isRemoveAllDialog: false,
     showLoader: false,
-    users: [{}],
+    users: [],
 };
 
-if (localStorage.getItem("useradminapp")) {
-    const json = JSON.parse(localStorage.getItem("useradminapp") || "{}");
+if (localStorage.getItem("useradminapp2")) {
+    const json = JSON.parse(localStorage.getItem("useradminapp2") || "{}");
     if (UserList.is(json)) { initialState = json; }
 }
 
 const users = UserList.create(initialState);
-users.load();
+// users.load();
 
 addMiddleware(users, (call, next) => {
     console.log(`[${call.type}] ${call.name}`);
@@ -28,7 +28,7 @@ addMiddleware(users, (call, next) => {
 });
 
 onSnapshot(users, (snapshot) => {
-    localStorage.setItem("useradminapp", JSON.stringify(snapshot));
+    localStorage.setItem("useradminapp2", JSON.stringify(snapshot));
 });
 
 function renderApp() {
