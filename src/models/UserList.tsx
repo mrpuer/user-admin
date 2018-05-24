@@ -37,16 +37,16 @@ const UserList = types.model({
     self.showLoader = false;
     self.isFetchUserDialog = false;
   }),
-  // load: flow(function* load() {
-  //   const response = yield window.fetch("https://randomuser.me/api/?results=5");
-  //   const newUsers = yield response.json();
-  //   const newUsersFormatted = newUsers.results.map((user: UserType) => {
-  //     user.dob = user.dob.split(" ")[0];
-  //     user.registered = user.registered.split(" ")[0];
-  //     return user;
-  //   });
-  //   applySnapshot(self.users, newUsersFormatted);
-  // }),
+  load: flow(function* load() {
+    const response = yield window.fetch("https://randomuser.me/api/?results=5");
+    const newUsers = yield response.json();
+    const newUsersFormatted = newUsers.results.map((user: UserType) => {
+      user.dob = user.dob.split(" ")[0];
+      user.registered = user.registered.split(" ")[0];
+      return user;
+    });
+    applySnapshot(self.users, newUsersFormatted);
+  }),
   clear() {
     applySnapshot(self, {users: []});
   },

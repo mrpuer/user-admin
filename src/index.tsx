@@ -20,7 +20,7 @@ if (localStorage.getItem("useradminapp")) {
 }
 
 const users = UserList.create(initialState);
-// users.load();
+users.load();
 
 addMiddleware(users, (call, next) => {
     console.log(`[${call.type}] ${call.name}`);
