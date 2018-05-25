@@ -37,4 +37,4 @@ class AddNewUser extends React.Component<IUserList, {newUser: any}> {
   }
 }
 
-export default observer(AddNewUser);
+export default AddNewUser;

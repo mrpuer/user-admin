@@ -1,4 +1,4 @@
-import {Icon, ListItemIcon, ListItemText, MenuItem, MenuList, Paper} from "material-ui";
+import {Icon, ListItemIcon, ListItemText, MenuItem, MenuList, Paper, Tooltip} from "material-ui";
 import {observer} from "mobx-react";
 import * as React from "react";
 import NewUserAdd from "./NewUserAdd";
@@ -37,12 +37,14 @@ const Menu = ({usersList}: any) => {
           </ListItemIcon>
               <ListItemText inset={true} primary="Settings" />
             </MenuItem>
+            <Tooltip id="tooltip-icon" title="This action can't be restored">
             <MenuItem style={{backgroundColor: "#FFCCBC"}}>
             <ListItemIcon>
             <Icon color="primary">clear</Icon>
           </ListItemIcon>
               <ListItemText inset={true} primary="Delete All Users" onClick={usersList.switchRemoveAll} />
             </MenuItem>
+            </Tooltip>
           </MenuList>
         </Paper>
       </div>

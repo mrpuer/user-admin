@@ -1,5 +1,5 @@
-import crypto = require("crypto");
-import { getParent, types } from "mobx-state-tree";
+import crypto = require('crypto');
+import { getParent, types } from 'mobx-state-tree';
 
 interface IInputEvent {
   value: string;
@@ -7,59 +7,59 @@ interface IInputEvent {
 }
 
 const UserName = types.model({
-  first: "",
-  last: "",
-  title: types.optional(types.enumeration("title", ["mr",
-    "ms",
-    "miss",
-    "monsieur",
-    "mrs",
-    "",
-    "madame",
-    "mademoiselle",
-  ]), ""),
+  first: '',
+  last: '',
+  title: types.optional(types.enumeration('title', ['mr',
+    'ms',
+    'miss',
+    'monsieur',
+    'mrs',
+    '',
+    'madame',
+    'mademoiselle',
+  ]), ''),
 });
 
 const UserId = types.model({
-  name: "",
+  name: '',
   value: types.maybe(types.union(types.number, types.string)),
 });
 
 const UserLocation = types.model({
-  city: "",
-  postcode: types.optional(types.union(types.number, types.string), ""),
-  state: "",
-  street: "",
+  city: '',
+  postcode: types.optional(types.union(types.number, types.string), ''),
+  state: '',
+  street: '',
 });
 
 const UserLogin = types.model({
-  md5: "",
-  password: "",
-  salt: "",
-  sha1: "",
-  sha256: "",
-  username: "",
+  md5: '',
+  password: '',
+  salt: '',
+  sha1: '',
+  sha256: '',
+  username: '',
 });
 
 const UserPicture = types.model({
-  large: "",
-  medium: "",
-  thumbnail: "",
+  large: '',
+  medium: '',
+  thumbnail: '',
 });
 
 const User = types.model({
-  cell: "",
-  dob: "1945-05-09",
-  email: "",
-  gender: types.optional(types.enumeration("gender", ["male", "female", ""]), ""),
+  cell: '',
+  dob: '1945-05-09',
+  email: '',
+  gender: types.optional(types.enumeration('gender', ['male', 'female', '']), ''),
   id: types.optional(UserId, {}),
   location: types.optional(UserLocation, {}),
   login: types.optional(UserLogin, {}),
   name: types.optional(UserName, {}),
-  nat: "",
-  phone: "",
+  nat: '',
+  phone: '',
   picture: types.optional(UserPicture, {}),
-  registered: "1945-05-09",
+  registered: '1945-05-09',
   showDeleteDialog: false,
   showEditDialog: false,
 }).actions(((self) => ({
@@ -69,10 +69,10 @@ const User = types.model({
   changeLName(newName: string) {
     self.name.last = newName;
   },
-  changeTitle(event: "mr" | "ms" | "miss" | "monsieur" | "mrs" | "" | "madame" | "mademoiselle") {
+  changeTitle(event: 'mr' | 'ms' | 'miss' | 'monsieur' | 'mrs' | '' | 'madame' | 'mademoiselle') {
     self.name.title = event;
   },
-  changeGender(newGender: "male" | "female" | "") {
+  changeGender(newGender: 'male' | 'female' | '') {
     self.gender = newGender;
   },
   changeStreet(newStreet: string) {
@@ -91,12 +91,12 @@ const User = types.model({
     self.login.username = newLogin;
   },
   changePassword(newPass: string) {
-    const salt = crypto.randomBytes(Math.ceil(8)).toString("hex").slice(0, 8);
+    const salt = crypto.randomBytes(Math.ceil(8)).toString('hex').slice(0, 8);
     self.login.password = newPass;
     self.login.salt = salt;
-    self.login.md5 = crypto.createHmac("md5", salt).update(newPass).digest("hex");
-    self.login.sha1 = crypto.createHmac("sha1", salt).update(newPass).digest("hex");
-    self.login.sha256 = crypto.createHmac("sha256", salt).update(newPass).digest("hex");
+    self.login.md5 = crypto.createHmac('md5', salt).update(newPass).digest('hex');
+    self.login.sha1 = crypto.createHmac('sha1', salt).update(newPass).digest('hex');
+    self.login.sha256 = crypto.createHmac('sha256', salt).update(newPass).digest('hex');
   },
   changeDOB(newDob: string) {
     self.dob = newDob;

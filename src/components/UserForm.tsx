@@ -1,7 +1,7 @@
-import {FormControl, Input, InputLabel, MenuItem, Select, TextField, Typography} from "material-ui";
-import { observer } from "mobx-react";
-import * as React from "react";
-import { IUser } from "./Interfaces";
+import {FormControl, Input, InputLabel, MenuItem, Select, TextField, Typography} from 'material-ui';
+import { observer } from 'mobx-react';
+import * as React from 'react';
+import { IUser } from './Interfaces';
 
 class UserForm extends React.Component<IUser, {}> {
   public render() {
@@ -28,7 +28,7 @@ class UserForm extends React.Component<IUser, {}> {
         width: 150,
       },
       oneLine: {
-        float: "left",
+        float: 'left',
         margin: 10,
         width: 150,
       },
@@ -193,7 +193,7 @@ class UserForm extends React.Component<IUser, {}> {
       />
       <TextField
         label="ID Number"
-        defaultValue={id.value || ""}
+        defaultValue={id.value || ''}
         onChange={this.onIdValueChange}
       />
 
