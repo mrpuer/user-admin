@@ -210,6 +210,9 @@ class UserForm extends React.Component<IUser, {}> {
       </div>
     );
   }
+  // private onChangeInput = (event: any) => {
+  //   this.props.user.changeUser(event.target.value);
+  // }
   private onFNameChange = (event: any) => {
     this.props.user.changeFName(event.target.value);
   }

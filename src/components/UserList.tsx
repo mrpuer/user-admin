@@ -1,8 +1,9 @@
-import { Paper, Table, TableBody, TableCell, TableHead, TableRow, Toolbar, Typography } from "material-ui";
-import { observer } from "mobx-react";
-import * as React from "react";
-import { IUser} from "./Interfaces";
-import UserItem from "./UserItem";
+import { Paper, Table, TableBody, TableCell, TableHead, TableRow, Typography } from 'material-ui';
+import { observer } from 'mobx-react';
+import * as React from 'react';
+import { IUser} from './Interfaces';
+import UserItem from './UserItem';
+import UserListToolbar from './UserListToolbar';
 
 const styles = {
   head: {
@@ -18,11 +19,7 @@ const styles = {
 const UserList = observer(({ usersList }) => {
   return (
     <Paper>
-          <Toolbar>
-          <Typography variant="title" id="tableTitle">
-            Users List
-          </Typography>
-    </Toolbar>
+      <UserListToolbar usersList={usersList} />
       <Table>
         <TableHead style={styles.head}>
           <TableRow>

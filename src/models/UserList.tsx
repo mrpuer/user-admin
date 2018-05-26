@@ -54,6 +54,42 @@ const UserList = types.model({
   get totalUsers() {
     return self.users.length;
   },
+  get userKeys() {
+    return Object.keys(User.properties).map(key => {
+      switch(key) {
+        case 'cell':
+          return 'Cell Phone';
+        case 'dob':
+          return 'Date of Birthd';
+        case 'email':
+          return 'Email';
+        case 'gender':
+          return 'Gender';
+        case 'id':
+          return 'ID';
+        case 'location':
+          return 'Location';
+        case 'login':
+          return 'Username';
+        case 'name':
+          return 'Full Name';
+        case 'nat':
+          return 'Nationality';
+        case 'phone':
+          return 'Phone';
+        case 'picture':
+          return 'Avatar';
+        case 'registered':
+          return 'Reg. Date';
+        case 'showDeleteDialog':
+          return 'Delete';
+        case 'showEditDialog':
+          return 'Edit';
+        default:
+          return 'Invalid User Key!';
+      }
+    });
+  },
 }));
 
 export default UserList;
