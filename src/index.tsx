@@ -14,8 +14,8 @@ let initialState: any = {
         showLoader: false,},
 };
 
-if (localStorage.getItem("useradminapp3")) {
-    const json = JSON.parse(localStorage.getItem("useradminapp3") || "{}");
+if (localStorage.getItem("useradminapp4")) {
+    const json = JSON.parse(localStorage.getItem("useradminapp4") || "{}");
     if (RootStore.is(json)) { initialState = json; }
 }
 
@@ -29,7 +29,7 @@ addMiddleware(store, (call, next) => {
 });
 
 onSnapshot(store, (snapshot) => {
-    localStorage.setItem("useradminapp3", JSON.stringify(snapshot));
+    localStorage.setItem("useradminapp4", JSON.stringify(snapshot));
 });
 
 function renderApp() {
