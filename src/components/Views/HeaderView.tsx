@@ -1,7 +1,6 @@
 import {AppBar, Button, Icon, IconButton, Toolbar, Tooltip, Typography} from "material-ui";
 import { observer } from "mobx-react";
 import * as React from "react";
-import { IUserList } from "../Interfaces";
 
 const styles = {
   flex: {

@@ -1,8 +1,10 @@
-import User from "../models/User";
-import UserList from "../models/UserList";
+import {RootStore, User, UsersList} from "../models";
 
-export type UserListType = typeof UserList.Type;
+export type UsersListType = typeof UsersList.Type;
 export type UserType = typeof User.Type;
+export type RootStoreType = typeof RootStore.Type;
 
-export interface IUserList { usersList: UserListType; }
+export interface IUsersList { usersList: UsersListType; }
 export interface IUser { user: UserType; }
+export interface IRootStore { rootStore: RootStoreType; }
+

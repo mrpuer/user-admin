@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {observer} from 'mobx-react';
-import {IUserList} from './Interfaces';
+import {IRootStore} from './Interfaces';
 import {Button, Chip, Divider, FormControlLabel, Switch, FormGroup, ExpansionPanel, ExpansionPanelActions, ExpansionPanelDetails, ExpansionPanelSummary, Toolbar, Typography, Tooltip, Icon} from 'material-ui';
 
 const styles = {
@@ -8,7 +8,7 @@ const styles = {
     flexBasis: '50%',
   },
 }
-class UserListToolbar extends React.Component<{usersList: any}, {expanded: boolean}> {
+class UserListToolbar extends React.Component<{tableState: any}, {expanded: boolean}> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -16,7 +16,6 @@ class UserListToolbar extends React.Component<{usersList: any}, {expanded: boole
     }
   }
   render() {
-    console.log(this.props.usersList.userKeys);
     return (
       <ExpansionPanel expanded={this.state.expanded} onChange={this.handleExpand}>
           <ExpansionPanelSummary expandIcon={<Icon aria-label="Filter list">details</Icon>}>
@@ -27,7 +26,7 @@ class UserListToolbar extends React.Component<{usersList: any}, {expanded: boole
 
     </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <div style={styles.column}>
+            {/* <div style={styles.column}>
               <FormGroup row>
                 {this.props.usersList.userKeys.map((item: string) =>
                 <FormControlLabel
@@ -41,7 +40,7 @@ class UserListToolbar extends React.Component<{usersList: any}, {expanded: boole
                 label={item}
               /> )}
               </FormGroup>
-          </div>
+          </div> */}
           <div style={styles.column}>
             <Typography variant="caption">
               Select items to view

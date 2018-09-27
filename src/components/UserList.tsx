@@ -19,7 +19,7 @@ const styles = {
 const UserList = observer(({ usersList }) => {
   return (
     <Paper>
-      <UserListToolbar usersList={usersList} />
+      {/* <UserListToolbar usersList={usersList} /> */}
       <Table>
         <TableHead style={styles.head}>
           <TableRow>

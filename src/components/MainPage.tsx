@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IUserList } from "./Interfaces";
+import { IRootStore } from "./Interfaces";
 import Menu from "./Menu";
 import UserList from "./UserList";
 
@@ -9,11 +9,11 @@ const styles = {
     },
 };
 
-const App = ({usersList}: IUserList) => {
+const App = ({rootStore}: IRootStore) => {
   return (
     <div style={styles.root}>
-        <Menu usersList={usersList} />
-        <UserList usersList={usersList} />
+        <Menu rootStore={rootStore} />
+        <UserList rootStore={rootStore} />
     </div>
   );
 };

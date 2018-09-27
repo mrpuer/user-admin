@@ -1,12 +1,12 @@
-import {observer} from "mobx-react";
+import { observer } from "mobx-react";
 import * as React from "react";
-import User from "../models/User";
-import { IUserList } from "./Interfaces";
+import { User } from "../models";
+import { IRootStore, UserType } from "./Interfaces";
 import UserForm from "./UserForm";
 import DialogView from "./Views/DialogView";
 
-class AddNewUser extends React.Component<IUserList, {newUser: any}> {
-  constructor(props: any) {
+class NewUserAdd extends React.Component<IRootStore, {newUser: UserType}> {
+  constructor(props: IRootStore) {
     super(props);
     this.state = {newUser: User.create({})};
   }
@@ -16,25 +16,25 @@ class AddNewUser extends React.Component<IUserList, {newUser: any}> {
       actionFunc: this.addUserClick,
       description: "Some text about users data.",
       switchFunc: this.cancelClick,
-      switchVar: this.props.usersList.isAddUserDialog,
+      switchVar: this.props.rootStore.dialogs.isAddUser,
       title: "Add a new user",
     };
     return (
-      <DialogView state={this.props.usersList} content={dialogContent}>
+      <DialogView content={dialogContent}>
         <UserForm user={this.state.newUser} />
       </DialogView>
     );
   }
 
   private addUserClick = () => {
-    this.props.usersList.add(this.state.newUser);
+    this.props.rootStore.usersList.add(this.state.newUser);
     this.setState({});
-    this.props.usersList.switchAddUser();
+    this.props.rootStore.dialogs.switchAddUser();
   }
   private cancelClick = () => {
     this.setState({});
-    this.props.usersList.switchAddUser();
+    this.props.rootStore.dialogs.switchAddUser();
   }
 }
 
-export default AddNewUser;
+export default observer(NewUserAdd);

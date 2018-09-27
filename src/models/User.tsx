@@ -47,7 +47,7 @@ const UserPicture = types.model({
   thumbnail: '',
 });
 
-const User = types.model({
+export const User = types.model({
   cell: '',
   dob: '1945-05-09',
   email: '',
@@ -137,5 +137,3 @@ const User = types.model({
     self.showEditDialog = !self.showEditDialog;
   },
 })));
-
-export default User;

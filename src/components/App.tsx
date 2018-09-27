@@ -1,15 +1,13 @@
-import { CircularProgress, CssBaseline } from 'material-ui';
+import { CssBaseline } from 'material-ui';
 import { observer } from 'mobx-react';
 import * as React from 'react';
-import { IUserList } from './Interfaces';
+import { IRootStore } from './Interfaces';
 import Login from './Login';
 import MainPage from './MainPage';
-import Menu from './Menu';
-import UserList from './UserList';
 import HeaderView from './Views/HeaderView';
 
-class App extends React.Component<IUserList, {isLogged: boolean}> {
-    constructor(props: IUserList) {
+class App extends React.Component<IRootStore, {isLogged: boolean}> {
+    constructor(props: IRootStore) {
         super(props);
         this.state = {
             isLogged: false,
@@ -21,7 +19,7 @@ class App extends React.Component<IUserList, {isLogged: boolean}> {
                 <CssBaseline />
                 <HeaderView isLogged={this.state.isLogged} switchLogin={this.switchLogin} />
                 {this.state.isLogged ?
-                    <MainPage usersList={this.props.usersList} /> :
+                    <MainPage rootStore={this.props.rootStore} /> :
                     <Login switchLogin={this.switchLogin} />
                 }
             </React.Fragment>
